@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover your next great read with BookHub."
+    />
+    <title>BookHub — Discover Great Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="BookHub home">
+        <svg class="brand-icon" viewBox="0 0 42 38" aria-hidden="true">
+          <path d="M3 5.5c6.6-2 12.3-.9 18 3.2v26c-5.7-4.1-11.4-5.2-18-3.2z" />
+          <path d="M39 5.5c-6.6-2-12.3-.9-18 3.2v26c5.7-4.1 11.4-5.2 18-3.2z" />
+          <path class="brand-icon-fold" d="M21 8.7v26" />
+        </svg>
+        <span>BookHub</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#featured">Categories</a>
+        <a class="nav-link" href="#about">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-field">
+          <span class="visually-hidden">Search books</span>
+          <input id="book-search" type="search" placeholder="Search books..." />
+        </label>
+        <button class="button button-primary add-book-button" id="open-add-book" type="button">
+          Add Book
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="welcome-label">Welcome to BookHub</p>
+          <h1 id="hero-title">Discover Great Books</h1>
+          <p class="hero-tagline">Read. Learn. Grow.</p>
+          <a class="button button-primary browse-button" href="#featured">Browse Books</a>
+        </div>
+        <img
+          class="hero-illustration"
+          src="./images/hero-books-plant.png"
+          alt="A stack of colorful books beside a leafy plant"
+        />
+      </section>
+
+      <section class="featured-section" id="featured" aria-labelledby="featured-title">
+        <div class="section-heading">
+          <div class="section-heading-copy">
+            <h2 id="featured-title">Featured Books</h2>
+            <p>Explore our collection of amazing books.</p>
+          </div>
+          <div class="section-heading-actions">
+            <button class="clear-filter" id="clear-filter" type="button" hidden>Show all books</button>
+            <label class="category-filter">
+              <span class="visually-hidden">Filter by category</span>
+              <select id="category-filter">
+                <option value="">All Categories</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Productivity">Productivity</option>
+                <option value="Programming">Programming</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Self Help">Self Help</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="book-grid" id="book-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-state-icon" aria-hidden="true">⌕</span>
+          <h3>No books found</h3>
+          <p>Try a different search or choose another category.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="about">
+      <a class="footer-brand" href="#home">
+        <svg class="brand-icon" viewBox="0 0 42 38" aria-hidden="true">
+          <path d="M3 5.5c6.6-2 12.3-.9 18 3.2v26c-5.7-4.1-11.4-5.2-18-3.2z" />
+          <path d="M39 5.5c-6.6-2-12.3-.9-18 3.2v26c5.7-4.1 11.4-5.2 18-3.2z" />
+          <path class="brand-icon-fold" d="M21 8.7v26" />
+        </svg>
+        <span>BookHub</span>
+      </a>
+      <p>© 2025 BookHub. All rights reserved.</p>
+      <a class="back-to-top" href="#home">Back to top ↑</a>
+    </footer>
+
+    <div class="modal-backdrop" id="add-book-backdrop" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="add-book-title">
+        <button class="modal-close" type="button" aria-label="Close dialog" data-close-modal>×</button>
+        <p class="modal-kicker">Grow your reading list</p>
+        <h2 id="add-book-title">Add a book</h2>
+        <form class="add-book-form" id="add-book-form">
+          <label>
+            Book title
+            <input name="title" type="text" placeholder="e.g. The Great Gatsby" required maxlength="100" />
+          </label>
+          <label>
+            Author
+            <input name="author" type="text" placeholder="e.g. F. Scott Fitzgerald" required maxlength="80" />
+          </label>
+          <label>
+            Category
+            <select name="category" required>
+              <option value="Fiction">Fiction</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Productivity">Productivity</option>
+              <option value="Programming">Programming</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Self Help">Self Help</option>
+            </select>
+          </label>
+          <label>
+            Description <span class="optional-label">(optional)</span>
+            <textarea name="description" rows="3" maxlength="500" placeholder="What is this book about?"></textarea>
+          </label>
+          <button class="button button-primary submit-book-button" type="submit">Add to BookHub</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="book-details-backdrop" hidden>
+      <section class="modal details-modal" role="dialog" aria-modal="true" aria-labelledby="details-title">
+        <button class="modal-close" type="button" aria-label="Close dialog" data-close-modal>×</button>
+        <div id="book-details-content"></div>
+      </section>
+    </div>
+  </body>
+</html>

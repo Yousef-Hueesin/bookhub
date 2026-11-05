@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "cd .. && eslint --config bookhub/eslint.config.js script.js",
+    "lint": "eslint --config eslint.config.js script.js",
     "preview": "vite preview"
   },
   "devDependencies": {
